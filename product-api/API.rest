@@ -33,4 +33,16 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0MDAzNywiZXhwIjoxNzQ4NjQwMDk3fQ.o_AgSTT9tHw4_nGYVvM8Ei_f4hzT_sshcScAZpN-MkM
 
 
-###
+### CART
+GET http://localhost:3000/cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0NjcwMiwiZXhwIjoxNzQ4NjUwMzAyfQ.OkucEcuJ-PsfTDt-PeI8fxwDBI01Bkf-Ijww6eA8vxM
+
+### Add to cart
+POST http://localhost:3000/cart/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0NjcwMiwiZXhwIjoxNzQ4NjUwMzAyfQ.OkucEcuJ-PsfTDt-PeI8fxwDBI01Bkf-Ijww6eA8vxM
+
+{
+    "productId": 1
+}
