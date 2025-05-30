@@ -1,6 +1,12 @@
 ### Get all products
-GET http://localhost:3000/
+POST http://localhost:3000/user
 Content-Type: application/json
+
+{
+    "name": 1,
+    "email": "john.doeexample.com",
+    "password": "12346"
+}
 
 ###
 ### Get product by ID
