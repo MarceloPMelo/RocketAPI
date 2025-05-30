@@ -12,7 +12,7 @@ export class UserService {
         try {
             const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
             
-            return await this.prisma.user.create({
+            const user = await this.prisma.user.create({
                 data: {
                     name: createUserDto.name,
                     email: createUserDto.email,
@@ -25,11 +25,22 @@ export class UserService {
                     // Não retorna o password por segurança
                 }
             });
+            const cart = await this.prisma.cart.create({
+                data: {
+                    userId: user.id
+                }
+            });
+            return {
+                message: 'Usuário criado com sucesso',
+                user,
+                cart
+            };
         } catch (error) {
             if (error instanceof PrismaClientKnownRequestError && error.code === 'P2002') {
                 throw new ConflictException('Email já cadastrado');
             }
             throw new InternalServerErrorException('Erro ao criar usuário');
         }
+        
     }
 }
