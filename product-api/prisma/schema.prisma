@@ -14,13 +14,14 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  name  String
-  email String  @unique
-  password String
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
 
+  carts     Cart[]
+  orders    Order[]
 }
-
 
 model Product {
   id          Int     @id
@@ -31,6 +32,63 @@ model Product {
   image       String
   rate        Float
   count       Int
+
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+}
+
+model Cart {
+  id          Int         @id @default(autoincrement())
+  userId      Int
+  status      CartStatus? // ← Agora é opcional
+  createdAt   DateTime     @default(now())
+
+  user        User         @relation(fields: [userId], references: [id])
+  items       CartItem[]
+  order       Order?
+}
+
+
+model CartItem {
+  id        Int     @id @default(autoincrement())
+  cartId    Int
+  productId Int
+  quantity  Int
+  unitPrice Float
+
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  userId     Int
+  cartId     Int?        @unique
+  createdAt  DateTime    @default(now())
+  total      Float
+
+  user       User        @relation(fields: [userId], references: [id])
+  cart       Cart?       @relation(fields: [cartId], references: [id])
+  items      OrderItem[]
+}
+
+model OrderItem {
+  id         Int     @id @default(autoincrement())
+  orderId    Int
+  productId  Int
+  quantity   Int
+  unitPrice  Float
+
+  order      Order   @relation(fields: [orderId], references: [id])
+  product    Product @relation(fields: [productId], references: [id])
+}
+
+enum CartStatus {
+  ACTIVE
+  FINALIZED
+  ABANDONED
+  SAVED
+  CANCELED
 }
 
 
