@@ -1,42 +1,36 @@
 ### Get all products
-POST http://localhost:3000/user
-Content-Type: application/json
 
-{
-    "name": "ciclano",
-    "email": "ciclano@mail.com",
-    "password": "123456"
-}
-
-###
 ### Get product by ID
 POST http://localhost:3000/product/import
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0MDExMywiZXhwIjoxNzQ4NjQwMTczfQ.RwMfyFkkR3RmM-wVEI4p7EtV-KWK_AOA4iWQLl4gLz4
 
 
 
 ###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "cecilia@mail.com",
+    "password": "123456"
+}
+
+### Register new user
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "name": "cecilia",
+    "email": "cecilia@mail.com",
+    "password": "123456"
+}
+
+
 ### Create new product
-POST http://localhost:3000
+GET http://localhost:3000/auth/profile
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0MDAzNywiZXhwIjoxNzQ4NjQwMDk3fQ.o_AgSTT9tHw4_nGYVvM8Ei_f4hzT_sshcScAZpN-MkM
 
-{
-    "name": "Produto Teste",
-    "price": 29.99,
-    "description": "Descrição do produto teste"
-}
 
 ###
-### Update product
-PATCH http://localhost:3000/
-Content-Type: application/json
-
-{
-    "name": "Produto Atualizado",
-    "price": 39.99
-}
-
-###
-### Delete product
-DELETE http://localhost:3000/
-Content-Type: application/json
