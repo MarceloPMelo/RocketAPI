@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { CreateProductDto } from './create-product.dto';
+import { Auth } from 'src/auth/auth.decorator'; // Usar Auth() para proteger a rota
 
 @Controller('product')
 export class ProductController {
