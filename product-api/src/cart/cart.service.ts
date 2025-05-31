@@ -22,36 +22,136 @@ export class CartService {
         });
     }
 
+    
+
+    
+
     async addToCart(productId: number, userId: number) {
+
+        //verificar se o productId é um número e positivo
+        if (isNaN(productId) || productId <= 0) {
+            return {
+                message: 'Product ID must be a positive number',
+                statusCode: 400
+            }
+        }
+
         const cart = await this.prisma.cart.findFirst({
             where: { userId }
         });
 
         if (!cart) {
-            throw new Error('Cart not found');
+            return {
+                message: 'Cart not found',
+                statusCode: 404
+            }
         }
+
+        const product = await this.prisma.product.findUnique({
+            where: { id: productId }
+        });
+
+        if (!product) {
+            return {
+                message: 'Product not found',
+                statusCode: 404
+            }
+        }
+
         const cartItem = await this.prisma.cartItem.findFirst({
             where: { productId, cartId: cart.id }
         });
 
         if (cartItem) {
-            return this.prisma.cartItem.update({
+            const updatedItem = await this.prisma.cartItem.update({
                 where: { id: cartItem.id },
                 data: {
                     quantity: cartItem.quantity + 1
                 }
             });
+            return {
+                message: 'Item quantity updated successfully',
+                statusCode: 200,
+                data: updatedItem
+            };
         }
 
         else {
-            return this.prisma.cartItem.create({
+            const newItem = await this.prisma.cartItem.create({
                 data: {
                     productId,
                     cartId: cart.id,
                     quantity: 1,
-                    unitPrice: 0
+                    unitPrice: product.price
                 }
             });
+            return {
+                message: 'Item added to cart successfully',
+                statusCode: 201,
+                data: newItem
+            };
         }
     }
+
+    async removeFromCart(productId: number, userId: number) {
+        //verificar se o productId é um número e positivo
+        if (isNaN(productId) || productId <= 0) {
+            return {
+                message: 'Product ID must be a positive number',
+                statusCode: 400
+            }
+        }
+        
+        const cart = await this.prisma.cart.findFirst({
+            where: { userId }
+        });
+
+        if (!cart) {
+            return {
+                message: 'Cart not found',
+                statusCode: 404
+            }
+        }
+
+        const cartItem = await this.prisma.cartItem.findFirst({
+            where: { productId, cartId: cart.id }
+        });
+
+        if (!cartItem) {
+            return {
+                message: 'Item not found in cart',
+                statusCode: 404
+            }
+        }
+
+        if (cartItem.quantity > 1) {
+            const updatedItem = await this.prisma.cartItem.update({
+                where: { id: cartItem.id },
+                data: {
+                    quantity: cartItem.quantity - 1
+                }
+            });
+            return {
+                message: 'Item quantity updated successfully',
+                statusCode: 200,
+                data: updatedItem
+            };
+        }
+
+        else {
+            const deletedItem = await this.prisma.cartItem.delete({
+                where: { id: cartItem.id }
+            });
+            return {
+                message: 'Item removed from cart successfully',
+                statusCode: 200,
+                data: deletedItem
+            };
+        }
+
+        
+        
+        
+    }
+
 }

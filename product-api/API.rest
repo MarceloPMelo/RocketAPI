@@ -36,13 +36,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsI
 ### CART
 GET http://localhost:3000/cart
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0NjcwMiwiZXhwIjoxNzQ4NjUwMzAyfQ.OkucEcuJ-PsfTDt-PeI8fxwDBI01Bkf-Ijww6eA8vxM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODcyOTYxNiwiZXhwIjoxNzQ4NzMzMjE2fQ.8Hinm6XUaOMIiOM-agXHKcpfOvz3OMiZ6rfoY3fhrbk
 
 ### Add to cart
-POST http://localhost:3000/cart/add
+POST http://localhost:3000/cart/add/20
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0NjcwMiwiZXhwIjoxNzQ4NjUwMzAyfQ.OkucEcuJ-PsfTDt-PeI8fxwDBI01Bkf-Ijww6eA8vxM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODcyOTYxNiwiZXhwIjoxNzQ4NzMzMjE2fQ.8Hinm6XUaOMIiOM-agXHKcpfOvz3OMiZ6rfoY3fhrbk
 
-{
-    "productId": 1
-}
+
+### Remove from cart
+DELETE http://localhost:3000/cart/remove/20
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODcyOTYxNiwiZXhwIjoxNzQ4NzMzMjE2fQ.8Hinm6XUaOMIiOM-agXHKcpfOvz3OMiZ6rfoY3fhrbk
+
