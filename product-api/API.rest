@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "admin@gmail.com",
-    "password": "admin123"
+    "email": "teco@gmail.com",
+    "password": "123456"
 }
 
 ### Register new user
@@ -39,7 +39,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsI
 ### Get product by ID
 GET http://localhost:3000/product/search?title=shirt
 Content-Type: application/json
-Authorization: Bearer eyJhbGcJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNzQ4ODc1Mjg3LCJleHAiOjE3NDg4Nzg4ODd9.IT8c8N_iO5TLcn4Q4C1f_EP41b5G98IkrwZSV2Y_IrQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVjb0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0ODkwMzA1NiwiZXhwIjoxNzQ4OTA2NjU2fQ.JZ-H1VFQh2pSmDdEd4DIWA-bbIWatnvfL9HB9RBWqBw
 
 ### Create product
 POST http://localhost:3000/product
