@@ -1,6 +1,7 @@
 import { Injectable, HttpException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import axios, { AxiosError } from 'axios';
+import { ProductDto } from './create-product.dto';
 
 @Injectable()
 export class ProductService {
@@ -110,6 +111,18 @@ export class ProductService {
   }
 
   async getProductById(id: number) {
+    if (!id) {
+      return {
+        message: 'Product not found',
+        statusCode: 404
+      };
+    }
+    if (isNaN(id) || id < 0) {
+      return {
+        message: 'Invalid ID',
+        statusCode: 400
+      };
+    }
     const product = await this.prisma.product.findUnique({
       where: { id }
     });
@@ -126,5 +139,71 @@ export class ProductService {
       statusCode: 200,
       data: product
     };
+  }
+
+  async updateProduct(id: number, data: ProductDto) {
+
+    if (!id) {
+      return {
+        message: 'Product not found',
+        statusCode: 404
+      };
+    }
+    if (isNaN(id) || id < 0) {
+      return {
+        message: 'Invalid ID',
+        statusCode: 400
+      };
+    }
+
+    const product = await this.prisma.product.update({
+      where: { id },
+      data
+    });
+    return product;
+  }
+
+  async deleteProduct(id: number) {
+    if (!id) {
+      return {
+        message: 'Product not found',
+        statusCode: 404
+      };
+    }
+    if (isNaN(id) || id < 0) {
+      return {
+        message: 'Invalid ID',
+        statusCode: 400
+      };
+    }
+    await this.prisma.product.delete({
+      where: { id }
+    });
+    return { message: 'Product deleted successfully' };
+  }
+
+  async createProduct(data: ProductDto) {
+    // Encontra o maior ID atual e incrementa
+    const maxId = await this.prisma.product.findFirst({
+      orderBy: {
+        id: 'desc'
+      }
+    });
+
+    const nextId = (maxId?.id || 0) + 1;
+
+    const product = await this.prisma.product.create({
+      data: {
+        id: nextId,
+        title: data.title,
+        description: data.description,
+        image: data.image,
+        price: data.price,
+        count: data.count,
+        category: data.category,
+        rate: data.rate
+      }
+    });
+    return product;
   }
 }
