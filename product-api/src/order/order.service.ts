@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -37,7 +37,6 @@ export class OrderService {
             const newOrder = await prisma.order.create({
                 data: {
                     userId,
-                    cartId: cart.id,
                     total,
                     items: {
                         create: cart.items.map(item => ({
@@ -62,6 +61,10 @@ export class OrderService {
             return newOrder;
         });
 
+        for (const item of cart.items) {
+            await this.decrementProductCount(item.productId, item.quantity);
+        }
+
         return {
             message: 'Order created successfully',
             statusCode: 201,
@@ -69,5 +72,38 @@ export class OrderService {
         };
     }
 
-    
+    async decrementProductCount(productId: number, amount: number) {
+
+        const product = await this.prisma.product.findUnique({
+            where: { id: productId }
+        });
+
+        if (!product) {
+            throw new NotFoundException('Product not found');
+        }
+
+        // Verifica se há estoque suficiente
+        if (product.count < amount) {
+            throw new BadRequestException('Insufficient stock for product ' + product.title );
+        }
+
+        // Atualiza o estoque
+        const updatedProduct = await this.prisma.product.update({
+            where: { id: productId },
+            data: {
+                count: product.count - amount
+            }
+        });
+
+        return {
+            message: 'Product stock updated successfully',
+            statusCode: 200,
+            data: {
+                productId: updatedProduct.id,
+                previousCount: product.count,
+                decrementedAmount: amount,
+                currentCount: updatedProduct.count
+            }
+        };
+    }
 }
