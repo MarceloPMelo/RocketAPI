@@ -6,6 +6,7 @@ import { JwtStrategy } from './jwt.strategy';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './roles.guard';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { CartService } from 'src/cart/cart.service';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';
   providers: [
     AuthService,
     JwtStrategy,
+    CartService,
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard

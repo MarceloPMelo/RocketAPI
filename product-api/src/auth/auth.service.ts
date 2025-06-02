@@ -4,6 +4,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './dto/register.dto';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { CartService } from 'src/cart/cart.service';
 
 
 @Injectable()
@@ -11,6 +12,7 @@ export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
+    private cartService: CartService
   ) { }
 
   async login(email: string, password: string) {
@@ -80,11 +82,7 @@ export class AuthService {
           // Não retorna o password por segurança
         }
       });
-      const cart = await this.prisma.cart.create({
-        data: {
-          userId: user.id
-        }
-      });
+      const cart = await this.cartService.createCart(user.id);
       return {
         message: 'Usuário criado com sucesso',
         user,

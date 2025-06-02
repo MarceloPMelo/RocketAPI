@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "admin@gmail.com",
-    "password": "admin123"
+    "email": "cecilia@mail.com",
+    "password": "123456"
 }
 
 ### Register new user
@@ -12,8 +12,8 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "name": "Júlia",
-    "email": "julia@gmail.com",
+    "name": "Lucas",
+    "email": "lucas@gmail.com",
     "password": "123456"
 }
 
@@ -83,16 +83,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsI
 ### CART
 GET http://localhost:3000/cart
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODg5MTc1LCJleHAiOjE3NDg4OTI3NzV9.f_CnxmGGhQuYq1-RxJjF9_8vfqvCVJCwQSQircVzMM8
 
 ### Add to cart
-POST http://localhost:3000/cart/add/19
+POST http://localhost:3000/cart/add/7
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODg5MTc1LCJleHAiOjE3NDg4OTI3NzV9.f_CnxmGGhQuYq1-RxJjF9_8vfqvCVJCwQSQircVzMM8
 
 
 ### Remove from cart
-DELETE http://localhost:3000/cart/remove/20
+DELETE http://localhost:3000/cart/remove/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoianVsaWFAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDg4ODcwMTMsImV4cCI6MTc0ODg5MDYxM30.CnezqGkeNYtdYHoFsXMh-5nXs1lbQnGF-rghITbB590
+
+
+### Create order
+POST http://localhost:3000/order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODg5MTc1LCJleHAiOjE3NDg4OTI3NzV9.f_CnxmGGhQuYq1-RxJjF9_8vfqvCVJCwQSQircVzMM8
 
