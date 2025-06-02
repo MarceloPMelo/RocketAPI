@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "admin@gmail.com",
-    "password": "admin123"
+    "email": "julia@gmail.com",
+    "password": "123456"
 }
 
 ### Register new user
@@ -12,21 +12,33 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "name": "admin",
+    "name": "Júlia",
+    "email": "julia@gmail.com",
+    "password": "123456"
+}
+
+### Register admin
+POST http://localhost:3000/auth/register-admin
+Content-Type: application/json
+
+{
+    "name": "Admin",
     "email": "admin@gmail.com",
     "password": "admin123"
 }
-
-
-### Get all products
-GET http://localhost:3000/product
+### Import products
+POST http://localhost:3000/product/import
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoianVsaWFAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDg4NzY5MDgsImV4cCI6MTc0ODg4MDUwOH0.MEWtMGfQGJ8eh0drTfbGj8DcBKsgjet53oMPc5_qaFU
+### Get all products
+GET http://localhost:3000/product/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoianVsaWFAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDg4NzY5MDgsImV4cCI6MTc0ODg4MDUwOH0.MEWtMGfQGJ8eh0drTfbGj8DcBKsgjet53oMPc5_qaFU
 
 ### Get product by ID
 GET http://localhost:3000/product/search?title=shirt
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0MDExMywiZXhwIjoxNzQ4NjQwMTczfQ.RwMfyFkkR3RmM-wVEI4p7EtV-KWK_AOA4iWQLl4gLz4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoxNzQ4ODc1Mjg3LCJleHAiOjE3NDg4Nzg4ODd9.IT8c8N_iO5TLcn4Q4C1f_EP41b5G98IkrwZSV2Y_IrQ
 
 ### Get product by ID
 GET http://localhost:3000/product/
