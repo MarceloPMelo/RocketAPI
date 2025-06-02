@@ -76,4 +76,55 @@ export class ProductService {
       throw new InternalServerErrorException('Erro interno ao importar produtos');
     }
   }
+
+  async getAllProducts() {
+    const products = await this.prisma.product.findMany();
+    return {
+      message: 'Products retrieved successfully',
+      statusCode: 200,
+      data: products
+    };
+  }
+
+  async searchProducts(title: string) {
+    if (!title) {
+      return {
+        message: 'Title parameter is required',
+        statusCode: 400
+      };
+    }
+
+    const products = await this.prisma.product.findMany({
+      where: {
+        title: {
+          contains: title.toLowerCase()
+        }
+      }
+    });
+
+    return {
+      message: 'Products found successfully',
+      statusCode: 200,
+      data: products
+    };
+  }
+
+  async getProductById(id: number) {
+    const product = await this.prisma.product.findUnique({
+      where: { id }
+    });
+
+    if (!product) {
+      return {
+        message: 'Product not found',
+        statusCode: 404
+      };
+    }
+
+    return {
+      message: 'Product found successfully',
+      statusCode: 200,
+      data: product
+    };
+  }
 }

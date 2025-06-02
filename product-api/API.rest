@@ -1,19 +1,10 @@
-### Get all products
-
-### Get product by ID
-POST http://localhost:3000/product/import
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0MDExMywiZXhwIjoxNzQ4NjQwMTczfQ.RwMfyFkkR3RmM-wVEI4p7EtV-KWK_AOA4iWQLl4gLz4
-
-
-
-###
+### REGISTER AND LOGIN ###
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "cecilia@mail.com",
-    "password": "123456"
+    "email": "admin@gmail.com",
+    "password": "admin123"
 }
 
 ### Register new user
@@ -21,16 +12,41 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "name": "cecilia",
-    "email": "cecilia@mail.com",
-    "password": "123456"
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "password": "admin123"
 }
 
 
-### Create new product
-GET http://localhost:3000/auth/profile
+### Get all products
+GET http://localhost:3000/product
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0MDAzNywiZXhwIjoxNzQ4NjQwMDk3fQ.o_AgSTT9tHw4_nGYVvM8Ei_f4hzT_sshcScAZpN-MkM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+
+### Get product by ID
+GET http://localhost:3000/product/search?title=shirt
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsImVtYWlsIjoiY2VjaWxpYUBtYWlsLmNvbSIsImlhdCI6MTc0ODY0MDExMywiZXhwIjoxNzQ4NjQwMTczfQ.RwMfyFkkR3RmM-wVEI4p7EtV-KWK_AOA4iWQLl4gLz4
+
+### Get product by ID
+GET http://localhost:3000/product/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
 
 
-###
+### CART
+GET http://localhost:3000/cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+
+### Add to cart
+POST http://localhost:3000/cart/add/19
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+
+
+### Remove from cart
+DELETE http://localhost:3000/cart/remove/20
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+
