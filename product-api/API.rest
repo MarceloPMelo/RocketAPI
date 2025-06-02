@@ -12,8 +12,8 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "name": "Júlia",
-    "email": "julia@gmail.com",
+    "name": "admin",
+    "email": "admin@gmail.com",
     "password": "123456"
 }
 
@@ -44,14 +44,14 @@ Authorization: Bearer eyJhbGcJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoi
 ### Create product
 POST http://localhost:3000/product
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ4ODgwMjU3LCJleHAiOjE3NDg4ODM4NTd9.wcj0wVKTAS2AjtHQzLRiXVXJdwcDxFLXrOnQrGokY3g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ4OTAwNzMwLCJleHAiOjE3NDg5MDQzMzB9.AxvJHtbdRR0LzboQQ3Y35pSg59j0Y9r1qMbYKGQEYDU
 
 {
-    "title": "Produto Teste",
+    "title": "Produto Teste1",
     "description": "Descrição do produto teste",
     "image": "https://via.placeholder.com/150",
     "price": 100,
-    "count": 10,
+    "count": 2,
     "category": "Eletrônicos",
     "rate": 5
 }
@@ -78,21 +78,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsI
 
 
 
-
-
 ### CART
 GET http://localhost:3000/cart
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODk5NzI1LCJleHAiOjE3NDg5MDMzMjV9.wvQ_xzDItm0Ae7YhznqBJx6oxJKrxyGhV8G-GXcrAuU
 
 ### Add to cart
-POST http://localhost:3000/cart/add/19
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
-
+POST http://localhost:3000/cart/add/22
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODk5NzI1LCJleHAiOjE3NDg5MDMzMjV9.wvQ_xzDItm0Ae7YhznqBJx6oxJKrxyGhV8G-GXcrAuU
 
 ### Remove from cart
-DELETE http://localhost:3000/cart/remove/20
+DELETE http://localhost:3000/cart/remove/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImVtYWlsIjoiYmVsdHJhbm9AbWFpbC5jb20iLCJpYXQiOjE3NDg4NzE4ODgsImV4cCI6MTc0ODg3NTQ4OH0.OQQoSgEqqjfB_KQnV96yFWRq3J1CD1MflKIuYdZRFZg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoianVsaWFAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDg4ODcwMTMsImV4cCI6MTc0ODg5MDYxM30.CnezqGkeNYtdYHoFsXMh-5nXs1lbQnGF-rghITbB590
+
+
+### Create order
+POST http://localhost:3000/order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODk5NzI1LCJleHAiOjE3NDg5MDMzMjV9.wvQ_xzDItm0Ae7YhznqBJx6oxJKrxyGhV8G-GXcrAuU
 

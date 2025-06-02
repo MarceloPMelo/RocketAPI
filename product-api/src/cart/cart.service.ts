@@ -22,6 +22,13 @@ export class CartService {
         });
     }
 
+    async createCart(userId: number) {
+        const cart = await this.prisma.cart.create({
+            data: { userId }
+        });
+        return cart;
+    }
+
     
 
     
