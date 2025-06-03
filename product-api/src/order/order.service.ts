@@ -106,4 +106,43 @@ export class OrderService {
             }
         };
     }
+
+    async getUserOrders(userId: number) {
+        const orders = await this.prisma.order.findMany({
+            where: { userId },
+            include: {
+                items: {
+                    include: {
+                        product: {
+                            select: {
+                                title: true,
+                                image: true,
+                                price: true
+                            }
+                        }
+                    }
+                }
+            },
+            orderBy: {
+                createdAt: 'desc'
+            }
+        });
+
+        return {
+            message: 'Orders retrieved successfully',
+            statusCode: 200,
+            data: orders.map(order => ({
+                id: order.id,
+                createdAt: order.createdAt,
+                total: order.total,
+                itemsCount: order.items.length,
+                items: order.items.map(item => ({
+                    quantity: item.quantity,
+                    unitPrice: item.unitPrice,
+                    subtotal: item.quantity * item.unitPrice,
+                    product: item.product
+                }))
+            }))
+        };
+    }
 }

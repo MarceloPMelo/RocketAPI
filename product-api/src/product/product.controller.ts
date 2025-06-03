@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get, Param, ParseIntPipe, Query, Put, Delete } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param, ParseIntPipe, Query, Put, Delete, BadRequestException } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { Roles } from '../auth/roles.decorator';
 import { ProductDto } from './create-product.dto';
@@ -30,13 +30,26 @@ export class ProductController {
     }
 
     /**
-     * Busca um produto específico pelo ID
-     * @param id - ID do produto
-     * @returns Produto encontrado ou erro 404
+     * Busca produtos por seus IDs
+     * @param ids - Lista de IDs dos produtos separados por vírgula (ex: 1,2,3)
+     * @returns Lista de produtos encontrados e lista de IDs não encontrados
      */
-    @Get(':id')
-    async getProductById(@Param('id', ParseIntPipe) id: number) {
-        return this.productService.getProductById(id);
+    @Get('ids')
+    async getProductById(@Query('ids') ids: string) {
+        if (!ids) {
+            throw new BadRequestException('IDs parameter is required');
+        }
+
+        // Converte a string de IDs em um array de números
+        const productIds = ids.split(',')
+            .map(id => parseInt(id.trim()))
+            .filter(id => !isNaN(id));
+
+        if (productIds.length === 0) {
+            throw new BadRequestException('No valid IDs provided');
+        }
+
+        return this.productService.getProductById(productIds);
     }
 
     /**
