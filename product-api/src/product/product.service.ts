@@ -110,34 +110,33 @@ export class ProductService {
     };
   }
 
-  async getProductById(id: number) {
-    if (!id) {
-      return {
-        message: 'Product not found',
-        statusCode: 404
-      };
-    }
-    if (isNaN(id) || id < 0) {
-      return {
-        message: 'Invalid ID',
-        statusCode: 400
-      };
-    }
-    const product = await this.prisma.product.findUnique({
-      where: { id }
+  async getProductById(ids: number[]) {
+    const products = await this.prisma.product.findMany({
+      where: {
+        id: {
+          in: ids
+        }
+      }
     });
 
-    if (!product) {
+    if (products.length === 0) {
       return {
-        message: 'Product not found',
+        message: 'No products found',
         statusCode: 404
       };
     }
 
+    // Verifica se algum ID não foi encontrado
+    const foundIds = products.map(p => p.id);
+    const notFoundIds = ids.filter(id => !foundIds.includes(id));
+
     return {
-      message: 'Product found successfully',
+      message: 'Products found successfully',
       statusCode: 200,
-      data: product
+      data: {
+        products,
+        notFoundIds: notFoundIds.length > 0 ? notFoundIds : undefined
+      }
     };
   }
 

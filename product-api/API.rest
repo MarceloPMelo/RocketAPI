@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "teco@gmail.com",
+    "email": "lucas@gmail.com",
     "password": "123456"
 }
 
@@ -36,10 +36,15 @@ GET http://localhost:3000/product/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoianVsaWFAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDg4NzY5MDgsImV4cCI6MTc0ODg4MDUwOH0.MEWtMGfQGJ8eh0drTfbGj8DcBKsgjet53oMPc5_qaFU
 
-### Get product by ID
+### Get product by title
 GET http://localhost:3000/product/search?title=shirt
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVjb0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0ODkwMzA1NiwiZXhwIjoxNzQ4OTA2NjU2fQ.JZ-H1VFQh2pSmDdEd4DIWA-bbIWatnvfL9HB9RBWqBw
+Authorization: Bearer 
+
+### Get product by ids
+GET http://localhost:3000/product/ids?ids=2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVjb0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0ODkwNDIyMCwiZXhwIjoxNzQ4OTA3ODIwfQ.dAZwddDiXNWzi57y7lg9ZzS758dzcVdfB3cSvzpdPgk
 
 ### Create product
 POST http://localhost:3000/product
@@ -97,4 +102,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsI
 POST http://localhost:3000/order
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODk5NzI1LCJleHAiOjE3NDg5MDMzMjV9.wvQ_xzDItm0Ae7YhznqBJx6oxJKrxyGhV8G-GXcrAuU
+
+### Get user orders
+GET http://localhost:3000/order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4OTA5MTE1LCJleHAiOjE3NDg5MTI3MTV9.uzDygOAaYK94BHpMCq1LGgLN8-9mYbRV0kUNprsEoGE
 
