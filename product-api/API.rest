@@ -1,0 +1,110 @@
+### REGISTER AND LOGIN ###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "lucas@gmail.com",
+    "password": "123456"
+}
+
+### Register new user
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "password": "123456"
+}
+
+### Register admin
+POST http://localhost:3000/auth/register-admin
+Content-Type: application/json
+
+{
+    "name": "Admin",
+    "email": "admin@gmail.com",
+    "password": "admin123"
+}
+### Import products
+POST http://localhost:3000/product/import
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoianVsaWFAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDg4ODAyMTAsImV4cCI6MTc0ODg4MzgxMH0.6F_RZ0m6kZK6tkVHI4p6ZpM8ieIk46Zp705JkYm8uoE
+
+### Get all products
+GET http://localhost:3000/product/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoianVsaWFAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDg4NzY5MDgsImV4cCI6MTc0ODg4MDUwOH0.MEWtMGfQGJ8eh0drTfbGj8DcBKsgjet53oMPc5_qaFU
+
+### Get product by title
+GET http://localhost:3000/product/search?title=shirt
+Content-Type: application/json
+Authorization: Bearer 
+
+### Get product by ids
+GET http://localhost:3000/product/ids?ids=2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidGVjb0BnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc0ODkwNDIyMCwiZXhwIjoxNzQ4OTA3ODIwfQ.dAZwddDiXNWzi57y7lg9ZzS758dzcVdfB3cSvzpdPgk
+
+### Create product
+POST http://localhost:3000/product
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ4OTAwNzMwLCJleHAiOjE3NDg5MDQzMzB9.AxvJHtbdRR0LzboQQ3Y35pSg59j0Y9r1qMbYKGQEYDU
+
+{
+    "title": "Produto Teste1",
+    "description": "Descrição do produto teste",
+    "image": "https://via.placeholder.com/150",
+    "price": 100,
+    "count": 2,
+    "category": "Eletrônicos",
+    "rate": 5
+}
+
+### Update product
+PUT http://localhost:3000/product/-1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ4ODgwMjU3LCJleHAiOjE3NDg4ODM4NTd9.wcj0wVKTAS2AjtHQzLRiXVXJdwcDxFLXrOnQrGokY3g
+
+{
+    "title": "Produto Teste Updated",
+    "description": "Descrição do produto teste updated",
+    "image": "https://via.placeholder.com/150",
+    "price": 100,
+    "count": 10,
+    "category": "Eletrônicos",
+    "rate": 5
+}
+
+### Delete product
+DELETE http://localhost:3000/product/-1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjksImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ4ODgwMjU3LCJleHAiOjE3NDg4ODM4NTd9.wcj0wVKTAS2AjtHQzLRiXVXJdwcDxFLXrOnQrGokY3g
+
+
+
+### CART
+GET http://localhost:3000/cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODk5NzI1LCJleHAiOjE3NDg5MDMzMjV9.wvQ_xzDItm0Ae7YhznqBJx6oxJKrxyGhV8G-GXcrAuU
+
+### Add to cart
+POST http://localhost:3000/cart/add/22
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODk5NzI1LCJleHAiOjE3NDg5MDMzMjV9.wvQ_xzDItm0Ae7YhznqBJx6oxJKrxyGhV8G-GXcrAuU
+
+### Remove from cart
+DELETE http://localhost:3000/cart/remove/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoianVsaWFAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDg4ODcwMTMsImV4cCI6MTc0ODg5MDYxM30.CnezqGkeNYtdYHoFsXMh-5nXs1lbQnGF-rghITbB590
+
+
+### Create order
+POST http://localhost:3000/order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4ODk5NzI1LCJleHAiOjE3NDg5MDMzMjV9.wvQ_xzDItm0Ae7YhznqBJx6oxJKrxyGhV8G-GXcrAuU
+
+### Get user orders
+GET http://localhost:3000/order
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJlbWFpbCI6Imx1Y2FzQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4OTA5MTE1LCJleHAiOjE3NDg5MTI3MTV9.uzDygOAaYK94BHpMCq1LGgLN8-9mYbRV0kUNprsEoGE
+
