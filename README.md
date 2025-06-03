@@ -17,7 +17,6 @@ Uma API RESTful para Loja de Produtos construída com NestJS, Prisma e SQLite.
 
 - **Carrinho**
   - Adicionar/remover itens
-  - Atualizar quantidades
   - Visualizar carrinho atual
 
 - **Pedidos**
@@ -78,7 +77,7 @@ pnpm run start:dev
 
 ### Produtos
 - `GET /product` - Lista todos os produtos
-- `GET /product/:id` - Busca produto por ID
+- `GET /product/ids?ids` - Busca produto por ID
 - `GET /product/search?title=` - Busca produtos por título
 - `POST /product` - Cria novo produto (ADMIN)
 - `PUT /product/:id` - Atualiza produto (ADMIN)
@@ -88,12 +87,11 @@ pnpm run start:dev
 ### Carrinho
 - `GET /cart` - Visualiza carrinho atual
 - `POST /cart/add/:productId` - Adiciona item ao carrinho
-- `PUT /cart/item/:id` - Atualiza quantidade de item
-- `DELETE /cart/item/:id` - Remove item do carrinho
+- `DELETE /cart/remove/:id` - Remove item do carrinho
 
 ### Pedidos
-- `POST /order` - Cria pedido com itens do carrinho
-- `GET /order/:id` - Visualiza detalhes do pedido
+- `POST /order` - Cria compra com itens do carrinho
+- `GET /order` - Visualiza histórico de compras do usuário logado
 
 ## 🔐 Variáveis de Ambiente
 
